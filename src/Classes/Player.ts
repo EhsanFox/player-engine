@@ -71,7 +71,7 @@ export default class Player extends EventEmitter implements PlayerInterface {
             throw new PlayerError(Errors.NOT_SUPPORTED, `${engine} is not supported by Music-Engines package.`);
 
         this.settings.engine = engine;
-        this.engine = Engines[engine];
+        this.engine = new Engines[engine];
         return this;
     }
 
