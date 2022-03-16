@@ -2,8 +2,7 @@ name: 📤 | Publish Package & Build Docs
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
   publish:
