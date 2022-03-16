@@ -1,5 +1,5 @@
 import { Client, Collection, Guild, GuildResolvable } from "discord.js"
-import Player from "../../src/Classes/Player";
+import Player from "../../Classes/Player";
 import { PlayerOptions } from "./Player";
 
 export interface ClientSettings {

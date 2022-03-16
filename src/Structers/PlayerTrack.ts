@@ -22,14 +22,14 @@ export default class PlayerTrack implements PlayerTrackInterface {
     readonly platform: string;
     readonly duration: DurationType;
     public stream: opus.Encoder | FFmpeg | stream.Readable | IncomingMessage | Buffer;
-    readonly raw: typeof YouTubeTrack | typeof SoundCloudTrack | typeof SpotifyTrack | typeof DeezerTrack;
+    public raw: any;
     public audioResource: AudioResource;
     public metadata: any;
 
     private tempStream: any;
     private streamType: StreamType;
     
-    constructor(data: typeof YouTubeTrack | typeof SoundCloudTrack | typeof SpotifyTrack | typeof DeezerTrack | any)
+    constructor(data: any)
     {
         this.raw = data;
 

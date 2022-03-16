@@ -1,5 +1,5 @@
-import Queue from "../../src/Classes/Queue";
-import PlayerTrack from "../../src/Structers/PlayerTrack";
+import Queue from "../../Classes/Queue";
+import PlayerTrack from "../../Structers/PlayerTrack";
 
 export interface QueueInterface {
 
