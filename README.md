@@ -1,2 +1,3 @@
-# djs-player
- 
+# player-engine
+
+ PACKAGE IS UNDER DEVELOPMENT
