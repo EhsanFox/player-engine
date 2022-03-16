@@ -254,7 +254,7 @@ export default class Player extends EventEmitter implements PlayerInterface {
 
             if(!this.tracks.nextTracks().length)
             {
-                this.emit(PlayerEvents.END);
+                this.emit(PlayerEvents.END, this.tracks.current());
                 if(this.settings.leaveOnEnd)
                 {
                     if(this.vcSubscription instanceof PlayerSubscription)

@@ -12,7 +12,7 @@ export default class Client implements ClientInterface {
     readonly players: Collection<GuildResolvable, Player> = new Collection();
     public settings: ClientSettings = {
         Player: {
-            engine: "youtube",
+            engine: "YouTube",
             leaveOnEnd: true,
             selfDeaf: true,
             selfMute: false,
