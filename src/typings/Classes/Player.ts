@@ -6,7 +6,7 @@ import { StageChannel, VoiceChannel } from "discord.js";
 import { VoiceConnection } from "@discordjs/voice";
 
 export type SupportedEngines = "YouTube" | "SoundCloud" | "Deezer" | "Spotify";
-export type SupportedEngineClasses = YouTube | Deezer | Spotify | SoundCloud;
+export type SupportedEngineClasses = typeof YouTube | typeof Deezer | typeof Spotify | typeof SoundCloud;
 export type RepeatMode = "one" | "all" | "none";
 
 export interface PlayerOptions {
