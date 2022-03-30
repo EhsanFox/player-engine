@@ -181,7 +181,11 @@ export default class Queue extends EventEmitter implements QueueInterface {
         if(num > this.tracks.length)
             return false;
 
-        this.endedTracks.concat(this.tracks.splice(0, num));
+        if(this.endedTracks.length > 0)
+            this.endedTracks.concat(this.tracks.splice(0, num));
+        else
+            this.endedTracks = this.tracks.splice(0, num);
+            
         this.currentTrack = this.tracks[0];
         this.emit(QueueEvents.CHANGE, { action: "skip", counts: num });
         return true;
@@ -205,7 +209,10 @@ export default class Queue extends EventEmitter implements QueueInterface {
     {
         if(this.watchDestroyed()) return;
 
-        this.tracks.concat(x);
+        if(this.tracks.length > 0)
+            this.tracks.concat(x);
+        else
+            this.tracks = x;
         this.currentTrack = this.tracks[0];
         return this;
     }
