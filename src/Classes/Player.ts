@@ -239,7 +239,6 @@ export default class Player extends EventEmitter implements PlayerInterface {
 
         if(!this.isPlaying)
         {
-            console.log(`Current Track: `, this.tracks.current());
             this.audioPlayer.play(this.tracks.current().createResource());
 
             if(!this.vcSubscription)

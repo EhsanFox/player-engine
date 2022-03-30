@@ -145,7 +145,6 @@ export default class Queue extends EventEmitter implements QueueInterface {
         if(!this.currentTrack)
             this.currentTrack = this.tracks[0];
 
-        console.log(`Returning: `, this.currentTrack);
         return this.currentTrack;
     }
 

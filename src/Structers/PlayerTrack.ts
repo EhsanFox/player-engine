@@ -107,7 +107,7 @@ export default class PlayerTrack implements PlayerTrackInterface {
                     platform: this.platform,
                     duraation: this.duration.full,
                 },
-                inputType: this.streamType ?? StreamType.Raw,
+                //inputType: this.streamType ?? StreamType.Raw,
                 inlineVolume,
             });
         }
