@@ -18,7 +18,7 @@ export default class Queue extends EventEmitter implements QueueInterface {
         super({
             captureRejections: true
         });
-        this.tracks = tracks;
+        this.tracks = tracks ? tracks : [];
     }
 
     private watchDestroyed(emit: boolean = true): boolean {
