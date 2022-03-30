@@ -41,8 +41,6 @@ export default class Player extends EventEmitter implements PlayerInterface {
         this.settings = opts;
         this.setEngine(this.settings.engine);
         this.tracks = new Queue();
-        this.tracks.init()
-        .catch(e => { throw e });
     }
 
     private watchDestroyed(emit: boolean = true): boolean

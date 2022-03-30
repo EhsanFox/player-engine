@@ -7,7 +7,7 @@ import PlayerError from "../utils/PlayerError";
 
 export default class Queue extends EventEmitter implements QueueInterface {
 
-    protected tracks: PlayerTrack[] = [];
+    private tracks: PlayerTrack[] = [];
     private currentTrack: PlayerTrack;
     private endedTracks: PlayerTrack[] = [];
     private isDestoryed: boolean = false;
