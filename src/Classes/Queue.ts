@@ -7,6 +7,7 @@ import PlayerError from "../utils/PlayerError";
 
 export default class Queue extends EventEmitter implements QueueInterface {
 
+    public initialized: boolean = false;
     private tracks: PlayerTrack[] = [];
     private currentTrack: PlayerTrack;
     private endedTracks: PlayerTrack[] = [];
@@ -49,6 +50,7 @@ export default class Queue extends EventEmitter implements QueueInterface {
                 await track.init();
 
             this.currentTrack = this.tracks[0];
+            this.initialized = true;
         }
         catch(e)
         {
