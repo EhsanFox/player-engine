@@ -140,6 +140,7 @@ export default class Player extends EventEmitter implements PlayerInterface {
         else if(getVoiceConnection(this.guild.id))
         {
             this.vcConnection = getVoiceConnection(this.guild.id);
+            this.isConnected = true;
             return this.vcConnection;
         }
         else
@@ -152,6 +153,7 @@ export default class Player extends EventEmitter implements PlayerInterface {
                     selfDeaf: ('selfDeaf' in this.settings) ? this.settings.selfDeaf : true,
                     selfMute: ('selfMute' in this.settings) ? this.settings.selfMute : false
                 });
+                this.isConnected = true;
                 
                 // Handle Voice Connection Events
                 this.vcConnection.on("error", (e) => { this.emit(PlayerEvents.ERROR, e) });
