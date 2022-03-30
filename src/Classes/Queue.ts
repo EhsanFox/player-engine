@@ -41,6 +41,8 @@ export default class Queue extends EventEmitter implements QueueInterface {
     async init(): Promise<void>
     {
         if(this.watchDestroyed()) return;
+
+        this.currentTrack = this.tracks[0];
         try
         {
             for(const track of this.tracks)
@@ -203,6 +205,7 @@ export default class Queue extends EventEmitter implements QueueInterface {
         if(this.watchDestroyed()) return;
 
         this.tracks.concat(x);
+        this.currentTrack = this.tracks[0];
         return this;
     }
 
