@@ -27,8 +27,11 @@ export default class Client implements ClientInterface {
     createPlayer(guild: Guild, opts: PlayerOptions = this.settings.Player): Player {
 
         if(this.players.has(guild.id))
-            return this.players.get(guild.id);
-
+        {
+            const result = this.players.get(guild.id);
+            result.settings = opts;
+            return result;
+        }
         const result = new Player(guild, opts);
         this.players.set(guild.id, result);
         return result;
