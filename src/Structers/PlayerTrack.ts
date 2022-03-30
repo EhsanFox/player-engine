@@ -88,7 +88,7 @@ export default class PlayerTrack implements PlayerTrackInterface {
                 this.tempStream instanceof Buffer)
             {
                 this.stream = this.tempStream;
-                this.createResource();
+                //this.createResource();
             }
         } catch (error) {
             throw error;
@@ -97,20 +97,17 @@ export default class PlayerTrack implements PlayerTrackInterface {
 
     createResource(inlineVolume: boolean = true): AudioResource
     {
-        if(!this.audioResource)
-        {
-            this.audioResource = createAudioResource(this.stream as stream.Readable, {
-                metadata: {
-                    title: this.title,
-                    picture: this.picture,
-                    url: this.url,
-                    platform: this.platform,
-                    duraation: this.duration.full,
-                },
-                //inputType: this.streamType ?? StreamType.Raw,
-                inlineVolume,
-            });
-        }
+        this.audioResource = createAudioResource(this.stream as stream.Readable, {
+            metadata: {
+                title: this.title,
+                picture: this.picture,
+                url: this.url,
+                platform: this.platform,
+                duraation: this.duration.format,
+            },
+            //inputType: this.streamType ?? StreamType.Raw,
+            inlineVolume,
+        });
 
         return this.audioResource;
     }
