@@ -227,8 +227,14 @@ export default class Player extends EventEmitter implements PlayerInterface {
                 }
             })
 
+        if(this.tracks.initialized)
+            await tracks.map(async x => await x.init());
+        
         tracks.map(x => x.addMetadata({ interaction, }));
         this.tracks.addTracks(tracks);
+
+        if(!this.tracks.initialized)
+            await this.tracks.init();
 
         if(!this.isPlaying)
         {
