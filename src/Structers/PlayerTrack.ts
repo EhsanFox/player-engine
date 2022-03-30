@@ -24,7 +24,7 @@ export default class PlayerTrack implements PlayerTrackInterface {
     public stream: opus.Encoder | FFmpeg | stream.Readable | IncomingMessage | Buffer;
     public raw: any;
     public audioResource: AudioResource;
-    public metadata: any;
+    public metadata: any = {};
 
     private tempStream: any;
     private streamType: StreamType;
