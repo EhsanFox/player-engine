@@ -216,7 +216,7 @@ export default class Player extends EventEmitter implements PlayerInterface {
         return this.audioPlayer.stop(forceStop);
     }
 
-    async play(tracks: PlayerTrack[], interaction: Interaction | CommandInteraction)
+    async play(interaction: Interaction | CommandInteraction, tracks?: PlayerTrack[])
     {
         if(this.watchDestroyed()) return;
         if(!this.vcConnection || !this.isConnected)
@@ -229,11 +229,21 @@ export default class Player extends EventEmitter implements PlayerInterface {
                 }
             })
 
-        if(this.tracks.initialized)
+        let gotTracks = true;
+        if(!tracks)
+        {
+            tracks = [this.tracks.current(), ...this.tracks.nextTracks()];
+            gotTracks = false;
+        }
+
+        if(gotTracks && !this.tracks.initialized)
             await tracks.map(async x => await x.init());
         
-        tracks.map(x => x.addMetadata({ interaction, }));
-        this.tracks.addTracks(tracks);
+        if(gotTracks)
+        {
+            tracks.map(x => ('interaction' in x.metadata) ? x : x.addMetadata({ interaction, }) );
+            this.tracks.addTracks(tracks);
+        }
 
         if(!this.tracks.initialized)
             await this.tracks.init();
