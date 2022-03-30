@@ -216,7 +216,7 @@ export default class Player extends EventEmitter implements PlayerInterface {
         return this.audioPlayer.stop(forceStop);
     }
 
-    async play(interaction: Interaction | CommandInteraction, tracks: PlayerTrack[])
+    async play(tracks: PlayerTrack[], interaction: Interaction | CommandInteraction)
     {
         if(this.watchDestroyed()) return;
         if(!this.vcConnection || !this.isConnected)
@@ -239,6 +239,7 @@ export default class Player extends EventEmitter implements PlayerInterface {
 
         if(!this.isPlaying)
         {
+            console.log(`Current Track: `, this.tracks.current());
             this.audioPlayer.play(this.tracks.current().createResource());
 
             if(!this.vcSubscription)
